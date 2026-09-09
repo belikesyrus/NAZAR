@@ -1,0 +1,307 @@
+Step 1 — Open the project in VS Code
+
+Your folder should look approximately like this:
+
+smart-monitoring-system/
+│
+├── frontend/
+├── backend/
+├── setup-guide/
+├── .env.example
+└── README.md
+
+The README confirms this structure.
+
+In VS Code:
+
+File → Open Folder → select smart-monitoring-system
+
+Step 2 — Check Python and Node.js
+
+Open VS Code terminal:
+
+Terminal → New Terminal
+
+Run:
+
+python --version
+
+You need Python 3.10 or newer.
+
+Then:
+
+node --version
+
+You need Node.js 18 or newer.
+
+Then:
+
+npm --version
+
+You need npm 9 or newer.
+
+If all three show valid versions, continue.
+
+Step 3 — Start the Backend
+
+In the VS Code terminal:
+
+cd backend
+
+You should now see something like:
+
+...\smart-monitoring-system\backend>
+Create Python virtual environment
+python -m venv venv
+Activate it
+venv\Scripts\activate
+
+You should see:
+
+(venv)
+
+at the beginning of your terminal line.
+
+These are the exact backend setup steps from the README.
+
+Step 4 — Install backend packages
+
+Run:
+
+pip install -r requirements.txt
+
+Wait until installation finishes.
+
+If you get a pip or module error, send me the screenshot and I can fix it.
+
+Step 5 — Create the .env file
+
+Still inside the backend folder, run:
+
+Copy-Item .env.example .env
+
+Then open:
+
+backend
+ ├── .env
+ ├── .env.example
+ ├── requirements.txt
+ ├── run.py
+ └── seed.py
+
+Open .env.
+
+The README says you need to configure at least:
+
+SECRET_KEY
+JWT_SECRET_KEY
+
+If you're unsure what values to put there, don't delete anything from the existing .env.example—send me the contents/screenshot and I'll tell you exactly what to enter.
+
+Step 6 — Create the demo database
+
+Make sure you're still in:
+
+backend
+
+Run:
+
+python seed.py
+
+This initializes the database with demo data.
+
+If it finishes without an error, continue.
+
+Step 7 — Start the Backend
+
+Run:
+
+python run.py
+
+You should get a message indicating the backend is running.
+
+The README specifies:
+
+http://localhost:5000
+
+as the backend address.
+
+IMPORTANT
+
+Do not close this terminal.
+
+Keep the backend running.
+
+Step 8 — Open a SECOND terminal
+
+In VS Code:
+
+Terminal → New Terminal
+
+Don't stop the first terminal.
+
+You should now have:
+
+TERMINAL 1
+Backend running
+
+and
+
+TERMINAL 2
+For frontend
+Step 9 — Go to frontend
+
+In Terminal 2:
+
+cd frontend
+
+Then install frontend packages:
+
+npm install
+
+The README specifies this as the frontend dependency-installation step.
+
+Wait for it to finish.
+
+Step 10 — Create frontend .env
+
+Still inside:
+
+frontend
+
+run:
+
+Copy-Item .env.example .env
+
+The README specifies this environment setup before starting the frontend.
+
+Step 11 — Start the Frontend
+
+Run:
+
+npm run dev
+
+You should see something similar to:
+
+Local: http://localhost:5173/
+
+The README specifies port 5173 for the frontend.
+
+Step 12 — Open the website
+
+Open Chrome and go to:
+
+http://localhost:5173
+
+Your Smart Real-Time Monitoring & Inspection System should now open.
+
+Step 13 — Login
+
+The project already contains demo accounts.
+
+For example, use:
+
+Department Official
+
+Email: admin@dosje.gov.in
+Password: Admin@123
+
+Or:
+
+PMU / Inspection Officer
+
+Email: officer@dosje.gov.in
+Password: Officer@123
+
+The README lists six demo roles/accounts.
+
+Your final setup should look like this
+Terminal 1
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python seed.py
+python run.py
+
+Keep this running.
+
+Terminal 2
+cd frontend
+npm install
+npm run dev
+
+Keep this running too.
+
+Browser
+http://localhost:5173
+If you get an error
+
+Don't randomly install packages or change files.
+
+Send me a screenshot of the error in Terminal 1 or Terminal 2, and I'll tell you exactly:
+
+1. What the error means → 2. Which file to change → 3. Exact command/code → 4. How to restart the project.
+
+Yes 👍 Your .env file is in the right format. You just need to replace the placeholder values for the secret keys.
+
+Use this:
+
+SECRET_KEY=smart-monitoring-secret-key-2026-change-this
+JWT_SECRET_KEY=smart-monitoring-jwt-secret-2026-change-this
+DATABASE_URL=sqlite:///smart_monitoring.db
+FLASK_ENV=development
+FLASK_DEBUG=1
+UPLOAD_FOLDER=uploads
+MAX_CONTENT_LENGTH=16777216
+FRONTEND_URL=http://localhost:5173
+Then do these steps
+
+1. Save the .env file
+Press:
+
+Ctrl + S
+
+2. Make sure you are in the backend folder
+
+Your terminal should look something like:
+
+...\smart-monitoring-system\backend>
+
+3. Activate virtual environment
+
+venv\Scripts\activate
+
+You should see:
+
+(venv)
+
+4. Initialize the database
+
+python seed.py
+
+5. Start the backend
+
+python run.py
+
+The backend should run on:
+
+http://localhost:5000
+
+The README specifically says to create .env, set SECRET_KEY and JWT_SECRET_KEY, then run seed.py and run.py.
+
+Then open a NEW terminal
+
+Don't close the backend terminal.
+
+cd frontend
+npm install
+npm run dev
+
+Then open:
+
+http://localhost:5173
+
+The frontend is configured to use port 5173 according to the project README.
+
+If python seed.py gives an error, send me that error screenshot before doing anything else.
